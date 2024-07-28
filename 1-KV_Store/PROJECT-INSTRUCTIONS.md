@@ -44,8 +44,10 @@ This project involves implementing a simple key-value store with a log-structure
 5. Run the program: `python main.py`
 
 ## Testing
-- Write unit tests for each class and method.
-- Use `pytest` for running tests: `pytest tests/`
+- Navigate to the project root directory.
+- Run tests using pytest: `PYTHONPATH=. pytest`
+- For more verbose output: `PYTHONPATH=. pytest -v`
+- To run a specific test file: `PYTHONPATH=. pytest tests/test_key_value_store.py`
 
 ## Initial Tests
 
@@ -68,6 +70,10 @@ You are expected to:
 3. Implement the suggested additional tests mentioned in the test file comments
 
 Remember, thorough testing is crucial for ensuring the reliability and correctness of your key-value store implementation.
+
+## Running the Program
+From the project root directory:
+`python -m src.main`
 
 ## Evaluation Criteria
 - Correctness: The key-value store should correctly handle put, get, and delete operations.
