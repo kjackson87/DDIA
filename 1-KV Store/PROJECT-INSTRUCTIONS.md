@@ -47,6 +47,28 @@ This project involves implementing a simple key-value store with a log-structure
 - Write unit tests for each class and method.
 - Use `pytest` for running tests: `pytest tests/`
 
+## Initial Tests
+
+We've provided some basic tests in `tests/test_key_value_store.py`. These tests cover:
+
+- Basic functionality of LogStructuredStore
+- MemTable operations
+- Segment file operations
+- An end-to-end test of the key-value store
+
+To run these tests:
+
+1. Ensure you're in the project root directory
+2. Run `pytest tests/test_key_value_store.py`
+
+You are expected to:
+
+1. Ensure all provided tests pass as you implement the functionality
+2. Add more detailed tests to cover edge cases, error conditions, and additional functionality
+3. Implement the suggested additional tests mentioned in the test file comments
+
+Remember, thorough testing is crucial for ensuring the reliability and correctness of your key-value store implementation.
+
 ## Evaluation Criteria
 - Correctness: The key-value store should correctly handle put, get, and delete operations.
 - Persistence: Data should survive program restarts.
