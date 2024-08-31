@@ -41,8 +41,10 @@ class TestSegment:
     def test_write_and_read(self, temp_dir):
         segment_file = temp_dir.join("segment.log")
         segment = Segment(str(segment_file))
-        segment.write("key1", b"value1", 0)
-        assert segment.read("key1") == b"value1"
+        segment.append("key1", b"value1")
+        k, v = segment.read(0)
+        assert k == "key1"
+        assert v == b"value1"
 
     def test_read_nonexistent(self, temp_dir):
         segment_file = temp_dir.join("segment.log")
