@@ -5,13 +5,10 @@ class MemTable:
         self.table: Dict[str, bytes] = {}
 
     def put(self, key: str, value: bytes) -> None:
-        # Implement in-memory put
-        pass
+        self.table[key] = value
 
     def get(self, key: str) -> Optional[bytes]:
-        # Implement in-memory get
-        pass
+        return self.table.get(key)
 
     def remove(self, key: str) -> None:
-        # Implement in-memory delete
-        pass
+        del self.table[key]
