@@ -1,0 +1,6 @@
+name: log_structured_kvstore
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
