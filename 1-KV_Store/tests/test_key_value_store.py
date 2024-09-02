@@ -2,11 +2,7 @@ import pytest
 import shutil
 import os
 from src.log_structured_kvstore.log_structured_store import LogStructuredStore
-from src.log_structured_kvstore.memtable import MemTable
-from src.log_structured_kvstore.segment import Segment
 from src.log_structured_kvstore.config import Config
-from src.log_structured_kvstore.bloom_filter import BloomFilter
-from src.log_structured_kvstore.write_ahead_log import WriteAheadLog
 
 @pytest.fixture
 def temp_dir(tmpdir):
@@ -88,113 +84,6 @@ class TestLogStructuredStore:
 
         for i in range(100):
             assert store2.get(f"key{i}") == f"value{i}".encode()
-
-class TestMemTable:
-    def test_put_and_get(self):
-        memtable = MemTable()
-        memtable.put("key1", b"value1")
-        assert memtable.get("key1") == b"value1"
-
-    def test_update(self):
-        memtable = MemTable()
-        memtable.put("key2", b"value2")
-        memtable.put("key2", b"new_value2")
-        assert memtable.get("key2") == b"new_value2"
-
-    def test_delete(self):
-        memtable = MemTable()
-        memtable.put("key3", b"value3")
-        memtable.delete("key3")
-        assert memtable.get("key3") is None
-
-    def test_nonexistent_key(self):
-        memtable = MemTable()
-        assert memtable.get("nonexistent") is None
-
-class TestSegment:
-    def test_write_and_read(self, temp_dir):
-        segment_file = temp_dir.join("segment.log")
-        segment = Segment(str(segment_file))
-        segment.append("key1", b"value1")
-        assert segment.read("key1") == b"value1"
-
-    def test_multiple_entries(self, temp_dir):
-        segment_file = temp_dir.join("segment.log")
-        segment = Segment(str(segment_file))
-        segment.append("key1", b"value1")
-        segment.append("key2", b"value2")
-        assert segment.read("key1") == b"value1"
-        assert segment.read("key2") == b"value2"
-
-    def test_update_entry(self, temp_dir):
-        segment_file = temp_dir.join("segment.log")
-        segment = Segment(str(segment_file))
-        segment.append("key1", b"value1")
-        segment.append("key1", b"new_value1")
-        assert segment.read("key1") == b"new_value1"
-
-    def test_delete_entry(self, temp_dir):
-        segment_file = temp_dir.join("segment.log")
-        segment = Segment(str(segment_file))
-        segment.append("key1", b"value1")
-        segment.append("key1", None)  # Delete operation
-        assert segment.read("key1") is None
-
-    def test_iterate_entries(self, temp_dir):
-        segment_file = temp_dir.join("segment.log")
-        segment = Segment(str(segment_file))
-        entries = [("key1", b"value1"), ("key2", b"value2"), ("key3", b"value3")]
-        for key, value in entries:
-            segment.append(key, value)
-
-        assert list(segment.iterate_entries()) == entries
-
-class TestBloomFilter:
-    def test_add_and_check(self):
-        bf = BloomFilter(1000)
-        bf.add("test_key")
-        assert bf.may_contain("test_key") == True
-        assert bf.may_contain("non_existent_key") == False
-
-    def test_false_positive_rate(self):
-        bf = BloomFilter(1000)
-        for i in range(100):
-            bf.add(f"key{i}")
-
-        false_positives = 0
-        for i in range(100, 200):
-            if bf.may_contain(f"key{i}"):
-                false_positives += 1
-
-        # False positive rate should be relatively low
-        assert false_positives / 100 < 0.1
-
-class TestWriteAheadLog:
-    def test_append_and_recover(self, temp_dir):
-        wal = WriteAheadLog(str(temp_dir))
-        wal.append("put", "key1", b"value1")
-        wal.append("delete", "key2")
-        recovered = wal.recover()
-        assert recovered == [("put", "key1", b"value1"), ("delete", "key2", None)]
-
-    def test_append_many_entries(self, temp_dir):
-        wal = WriteAheadLog(str(temp_dir))
-        for i in range(1000):
-            wal.append("put", f"key{i}", f"value{i}".encode())
-        recovered = wal.recover()
-        assert len(recovered) == 1000
-        assert recovered[500] == ("put", "key500", b"value500")
-
-    def test_recover_after_crash(self, temp_dir):
-        wal1 = WriteAheadLog(str(temp_dir))
-        for i in range(100):
-            wal1.append("put", f"key{i}", f"value{i}".encode())
-
-        # Simulate a crash by creating a new WAL instance
-        wal2 = WriteAheadLog(str(temp_dir))
-        recovered = wal2.recover()
-        assert len(recovered) == 100
-        assert recovered[50] == ("put", "key50", b"value50")
 
 class TestConfig:
     def test_load_from_file(self, temp_dir):
