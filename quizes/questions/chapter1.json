@@ -1,0 +1,64 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "question": "What are the three key concerns for data systems discussed in the chapter?",
+        "answer": "Reliability, Scalability, and Maintainability",
+        "page": 6
+      },
+      {
+        "id": 2,
+        "question": "How does the book define reliability?",
+        "answer": "The system should continue to work correctly (performing the correct function at the desired level of performance) even in the face of adversity (hardware or software faults, and even human error).",
+        "page": 6
+      },
+      {
+        "id": 3,
+        "question": "What is the difference between a fault and a failure?",
+        "answer": "A fault is usually defined as one component of the system deviating from its spec, whereas a failure is when the system as a whole stops providing the required service to the user.",
+        "page": 7
+      },
+      {
+        "id": 4,
+        "question": "What are the three types of faults discussed in the chapter?",
+        "answer": "Hardware faults, Software errors, and Human errors",
+        "page": "7-10"
+      },
+      {
+        "id": 5,
+        "question": "What is the difference between scaling up and scaling out?",
+        "answer": "Scaling up (vertical scaling) refers to moving to a more powerful machine, while scaling out (horizontal scaling) refers to distributing the load across multiple smaller machines.",
+        "page": 17
+      },
+      {
+        "id": 6,
+        "question": "What is tail latency amplification?",
+        "answer": "It's an effect where a small percentage of slow backend calls can cause a higher proportion of end-user requests to be slow, especially when an end-user request requires multiple backend calls.",
+        "page": 16
+      },
+      {
+        "id": 7,
+        "question": "What are the three design principles for software systems that can help with maintainability?",
+        "answer": "Operability, Simplicity, and Evolvability",
+        "page": 19
+      },
+      {
+        "id": 8,
+        "question": "How does the book define accidental complexity?",
+        "answer": "Accidental complexity is complexity that is not inherent in the problem that the software solves (as seen by the users) but arises only from the implementation.",
+        "page": 21
+      },
+      {
+        "id": 9,
+        "question": "What is meant by evolvability in the context of data systems?",
+        "answer": "Evolvability refers to making it easy for engineers to make changes to the system in the future, adapting it for unanticipated use cases as requirements change.",
+        "page": 22
+      },
+      {
+        "id": 10,
+        "question": "What are percentiles used for in measuring response times?",
+        "answer": "Percentiles are used to measure the distribution of response times and understand the experience of typical and outlier requests. For example, the 95th percentile response time means 95% of requests are faster than this time.",
+        "page": "14-16"
+      }
+    ]
+  }

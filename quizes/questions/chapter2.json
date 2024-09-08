@@ -1,0 +1,64 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "question": "What are the three main data models discussed in the chapter?",
+        "answer": "The relational model, the document model, and graph-based data models.",
+        "page": 28
+      },
+      {
+        "id": 2,
+        "question": "What was the main purpose of the relational model when it was introduced?",
+        "answer": "To hide implementation details behind a cleaner interface and provide a more abstract way of working with data.",
+        "page": 28
+      },
+      {
+        "id": 3,
+        "question": "What are some of the driving forces behind the adoption of NoSQL databases?",
+        "answer": "Greater scalability, preference for free and open-source software, specialized query operations, and frustration with the restrictiveness of relational schemas.",
+        "page": 29
+      },
+      {
+        "id": 4,
+        "question": "What is the difference between the document data model and the relational model in handling one-to-many relationships?",
+        "answer": "The document model can store nested records (one-to-many relationships) within the parent record, while the relational model typically requires separate tables linked by foreign keys.",
+        "page": 38
+      },
+      {
+        "id": 5,
+        "question": "What is meant by 'schema-on-read' versus 'schema-on-write'?",
+        "answer": "Schema-on-read means the structure of the data is implicit and only interpreted when the data is read, while schema-on-write means the schema is explicit and enforced when data is written to the database.",
+        "page": 40
+      },
+      {
+        "id": 6,
+        "question": "What are the main components of a property graph model?",
+        "answer": "Vertices (with a unique identifier and a set of properties) and edges (with a unique identifier, start and end vertices, a label, and a set of properties).",
+        "page": 50
+      },
+      {
+        "id": 7,
+        "question": "How does a triple-store model differ from a property graph model?",
+        "answer": "A triple-store model represents all data in the form of (subject, predicate, object) triples, while a property graph model uses separate concepts for vertices and edges with their properties.",
+        "page": 56
+      },
+      {
+        "id": 8,
+        "question": "What is the difference between a declarative query language and an imperative code approach?",
+        "answer": "A declarative query language specifies the pattern of data you want and what conditions the results must meet, while an imperative approach tells the computer exactly how to perform operations to get the desired result.",
+        "page": 43
+      },
+      {
+        "id": 9,
+        "question": "What are the three graph query languages mentioned in the chapter?",
+        "answer": "Cypher, SPARQL, and Datalog.",
+        "page": 52
+      },
+      {
+        "id": 10,
+        "question": "How does Datalog differ from other query languages discussed in the chapter?",
+        "answer": "Datalog is based on a set of rules that can be combined and reused, allowing for more complex queries to be built up incrementally.",
+        "page": 62
+      }
+    ]
+  }

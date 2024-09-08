@@ -1,0 +1,64 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "question": "What are the two main categories of storage engines discussed in the chapter?",
+        "answer": "Storage engines optimized for transaction processing (OLTP) and those optimized for analytics (OLAP).",
+        "page": 90
+      },
+      {
+        "id": 2,
+        "question": "What is a key difference between OLTP and OLAP in terms of data access patterns?",
+        "answer": "OLTP systems typically process a large number of small operations, each touching a small amount of data, while OLAP systems process fewer but larger operations that scan over a large portion of the dataset.",
+        "page": 90
+      },
+      {
+        "id": 3,
+        "question": "What are the two main schools of thought for OLTP storage engines?",
+        "answer": "The log-structured school (which only permits appending to files and deleting obsolete files) and the update-in-place school (which treats the disk as a set of fixed-size pages that can be overwritten).",
+        "page": 103
+      },
+      {
+        "id": 4,
+        "question": "What is a key advantage of log-structured storage engines?",
+        "answer": "They turn random-access writes into sequential writes on disk, which enables higher write throughput due to the performance characteristics of hard drives and SSDs.",
+        "page": 103
+      },
+      {
+        "id": 5,
+        "question": "What is a data warehouse and how does it differ from OLTP systems?",
+        "answer": "A data warehouse is a separate database containing a read-only copy of data from OLTP systems, optimized for analytics. Unlike OLTP systems, it's designed to handle complex queries that scan large portions of the dataset.",
+        "page": "91-92"
+      },
+      {
+        "id": 6,
+        "question": "What is column-oriented storage and why is it beneficial for analytical queries?",
+        "answer": "Column-oriented storage is a technique where data is stored by column rather than by row. It's beneficial for analytical queries because it allows the database to read only the columns needed for a query, reducing I/O and improving query performance.",
+        "page": "95-96"
+      },
+      {
+        "id": 7,
+        "question": "What is a B-tree and how does it differ from log-structured indexes?",
+        "answer": "A B-tree is a self-balancing tree data structure that keeps data sorted and allows searches, sequential access, insertions, and deletions in logarithmic time. Unlike log-structured indexes, B-trees update data in-place, breaking the database down into fixed-size pages.",
+        "page": "79-80"
+      },
+      {
+        "id": 8,
+        "question": "What is write amplification and why is it a concern in storage systems?",
+        "answer": "Write amplification is when a write to the database results in multiple writes to the disk over the course of the database's lifetime. It's a concern because it can reduce write throughput and cause faster wear on SSDs.",
+        "page": 84
+      },
+      {
+        "id": 9,
+        "question": "What is a star schema in the context of data warehouses?",
+        "answer": "A star schema is a data modeling technique used in data warehouses. It consists of one or more fact tables referencing any number of dimension tables, creating a star-like structure. This schema simplifies queries and provides fast aggregations.",
+        "page": "93-95"
+      },
+      {
+        "id": 10,
+        "question": "What is a data cube and how does it relate to materialized views?",
+        "answer": "A data cube is a multi-dimensional aggregation of data, pre-computing aggregates along various dimensions. It's a special case of a materialized view, which is a cached result of a query. Data cubes can significantly speed up certain types of analytical queries.",
+        "page": "101-102"
+      }
+    ]
+  }
